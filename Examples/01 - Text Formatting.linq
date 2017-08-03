@@ -9,4 +9,3 @@ DemoData
     .Map(name => Util.WithStyle(name, "text-decoration: underline; font-size: 14pt; color: orange;"))
 //    .Tee(o => o.GetType().Dump())
     .Dump();
-    
