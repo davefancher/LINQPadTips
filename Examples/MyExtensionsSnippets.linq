@@ -1,5 +1,30 @@
 <Query Kind="Statements" />
 
+public static class MyExtensions
+{
+	public static U Map<T, U>(this T x, Func<T, U> fn) => fn(x);
+	public static T Tee<T>(this T x, Action<T> act)
+	{
+		act(x);
+		return x;
+	}
+
+	public static IEnumerable<T> Iter<T>(this IEnumerable<T> seq, Action<T> act)
+	{
+		foreach (var item in seq) act(item);
+
+		return seq;
+	}
+
+	public static IEnumerable<T> Iteri<T>(this IEnumerable<T> seq, Action<T, int> act)
+	{
+		var counter = 0;
+		foreach (var item in seq) act(item, counter++);
+
+		return seq;
+	}
+}
+
 public class Person
 {
     public Person(string firstName, string middleName, string lastName)
